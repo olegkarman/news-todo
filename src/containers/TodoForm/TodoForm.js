@@ -17,7 +17,7 @@ const TodoSchema = Yup.object().shape({
  
 const TodoForm = ({ createNewTodo }) => {
     const submitValues = values => {
-        console.log(values);
+        console.log(values)
         createNewTodo(values);
     };
 
@@ -51,7 +51,7 @@ const TodoForm = ({ createNewTodo }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    createNewTodo: (todo) => dispatch(addTodos(todo)),
+    createNewTodo: (todo) => dispatch(addTodos(todo))
 });
   
 export default connect(null, mapDispatchToProps)(TodoForm);

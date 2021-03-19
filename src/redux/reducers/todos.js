@@ -1,32 +1,37 @@
-import { ADD_TODOS } from '../actionTypes'
+import { ADD_TODOS, REMOVE_TODOS } from '../actionTypes'
 
 const initialState = {
-    allIds: [],
-    byIds: {},
+    lastId: 0,
+    todosList: [],
 }
 
 const todos = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODOS: {
-            const { title, description, status, date } = action.payload
-            const id = Math.max(0, ...state.allIds) + 1;
             return {
                 ...state,
-                allIds: [...state.allIds, id],
-                byIds: {
-                    ...state.byIds,
-                    [id]: {
-                        id,
-                        title,
-                        description,
-                        status,
-                        date
+                lastId: state.lastId + 1,
+                todosList: [
+                    ...state.todosList,
+                    {
+                        id: state.lastId,
+                        ...action.payload
                     },
-                },
+                ],
+            }
+        }
+        case REMOVE_TODOS: {
+            const { id } = action.payload;
+            const index = state.todosList.findIndex(todo => todo.id === id);
+            let todosList = [...state.todosList];
+            todosList.splice(index, 1);
+            return {
+                ...state,
+                todosList
             }
         }
         default:
-            return state
+            return state;
     }
 };
 
