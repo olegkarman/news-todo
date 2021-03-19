@@ -1,9 +1,10 @@
 import React from 'react';
+import TodoForm from '../TodoForm/TodoForm';
 
 const TodosList = () => {
     return (
         <>
-            TodosList
+            <TodoForm />
         </>
     )
 };
