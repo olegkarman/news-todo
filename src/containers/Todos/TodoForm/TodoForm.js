@@ -65,12 +65,22 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
         });
     };
 
-    const drawUpdateButtons = () => (
-        <div className='form-contols'>
-            <button type="submit">{textValue}</button>
-            {updateTodoForm ? <a href={'/todos'}>Cancel</a> : null}
-        </div>
-    );
+    const drawSubmitButtons = touched => {
+        if (!updateTodoForm) {
+            return (
+                <button type="submit">{textValue}</button>
+            );
+        };
+
+        if (updateTodoForm && Object.keys(touched).length) {
+            return (
+                <>
+                    <button type="submit">{textValue}</button>
+                    <a href={'/todos'}>Cancel</a>
+                </>
+            );
+        };
+    };
 
     return (
         <div className='form-wrapper'>
@@ -91,7 +101,9 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
                         <div>{errors.description}</div>
                     ) : null}
                     {updateTodoForm ? drawDetailsFields() : null}
-                    {drawUpdateButtons()}
+                    <div className='form-contols'>
+                        {drawSubmitButtons(touched)}
+                    </div>
                 </Form>
             )}
             </Formik>
