@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
  import * as Yup from 'yup';
 import { addTodos, updateTodos } from '../../../redux/actions/todosActions';
 import { todoStatus } from '../../../utils/constants';
+import './TodoForm.css';
 
 const formBasicInputs = {
     title: Yup.string()
@@ -51,7 +52,7 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
     const drawDetailsFields = () => {
         return (
             <>
-                <Field as='select' name='status' className="status-input" >
+                <Field as='select' name='status' className="form-input status-input">
                     {renderStatusOptions()}
                 </Field>
                 <p className='date-text'>{todoDetails.date}</p>
@@ -92,13 +93,13 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
             >
             {({ errors, touched }) => (
                 <Form>
-                    <Field name='title' className="title-input" />
+                    <Field name='title' className="form-input title-input" />
                     {errors.title && touched.title ? (
-                        <div>{errors.title}</div>
+                        <div className='form-error'>{errors.title}</div>
                     ) : null}
-                    <Field name='description' className='description-input' />
+                    <Field name='description' className='form-input description-input' />
                     {errors.description && touched.description ? (
-                        <div>{errors.description}</div>
+                        <div className='form-error'>{errors.description}</div>
                     ) : null}
                     {updateTodoForm ? drawDetailsFields() : null}
                     <div className='form-contols'>

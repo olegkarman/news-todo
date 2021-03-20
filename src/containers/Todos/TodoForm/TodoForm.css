@@ -1,0 +1,9 @@
+.form-input {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-error {
+    color: #f00;
+    margin-bottom: 8px;
+}
