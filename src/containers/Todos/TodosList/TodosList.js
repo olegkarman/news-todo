@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import TodoItem from '../../components/TodoItem/TodoItem';
-import { removeTodos } from '../../redux/actions/todosActions';
+import TodoItem from '../../../components/TodoItem/TodoItem';
+import { removeTodos } from '../../../redux/actions/todosActions';
 import TodoForm from '../TodoForm/TodoForm';
 
 const TodosList = ({todosList, removeTodo}) => {
@@ -12,7 +12,6 @@ const TodosList = ({todosList, removeTodo}) => {
     };
 
     const deleteTodo = id => {
-        console.log(id);
         removeTodo(id);
     };
 
@@ -22,8 +21,9 @@ const TodosList = ({todosList, removeTodo}) => {
             {showTodosForm ? <TodoForm /> : null}
             
             <br />
-
-            {todosList.length ? drawTodos() : null}
+            <div className='todo-list-wrapper'>
+                {todosList.length ? drawTodos() : null}
+            </div>
         </div>
     )
 };

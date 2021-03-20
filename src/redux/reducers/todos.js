@@ -1,4 +1,5 @@
-import { ADD_TODOS, REMOVE_TODOS } from '../actionTypes'
+import { todoStatus } from '../../utils/constants';
+import { ADD_TODOS, REMOVE_TODOS, UPDATE_TODOS } from '../actionTypes'
 
 const initialState = {
     lastId: 0,
@@ -22,9 +23,22 @@ const todos = (state = initialState, action) => {
         }
         case REMOVE_TODOS: {
             const { id } = action.payload;
-            const index = state.todosList.findIndex(todo => todo.id === id);
             let todosList = [...state.todosList];
-            todosList.splice(index, 1);
+            const index = todosList.findIndex(todo => todo.id === id);
+            todosList[index].status = todoStatus.DELETED;
+            return {
+                ...state,
+                todosList
+            }
+        }
+        case UPDATE_TODOS: {
+            const { id } = action.payload;
+            let todosList = [...state.todosList];
+            const index = todosList.findIndex(todo => todo.id === id);
+            todosList[index] = {
+                ...todosList[index],
+                ...action.payload
+            }
             return {
                 ...state,
                 todosList
