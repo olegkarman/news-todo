@@ -1,0 +1,26 @@
+.todo-item-wrapper {
+    width: 130px;
+    padding: 14px 16px;
+    padding-right: 24px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #c9c9c9;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.todo-item-wrapper button {
+    float: right;
+    position: relative;
+    top: -14px;
+    right: -24px;
+}
+
+.todo-item-header {
+    word-break: break-all;
+    hyphens: auto;
+}
+
+.todo-item-wrapper a {
+    text-decoration: none;
+    color: #000;
+}

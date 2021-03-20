@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TodoItem from '../../../components/TodoItem/TodoItem';
 import { removeTodos } from '../../../redux/actions/todosActions';
 import TodoForm from '../TodoForm/TodoForm';
+import './TodosList.css';
 
 const TodosList = ({todosList, removeTodo}) => {
     const [showTodosForm, setTodosFormVisibility] = useState(false);
@@ -17,7 +18,7 @@ const TodosList = ({todosList, removeTodo}) => {
 
     return (
         <div>
-            <button onClick={() => setTodosFormVisibility(!showTodosForm)}>{!showTodosForm ? '+' : '-'}</button>
+            <button className='show-hide-create-todo' onClick={() => setTodosFormVisibility(!showTodosForm)}>{!showTodosForm ? '+' : '-'}</button>
             {showTodosForm ? <TodoForm /> : null}
             
             <br />

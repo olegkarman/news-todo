@@ -1,11 +1,12 @@
 import React from 'react';
+import './TodoItem.css';
 
 const TodoItem = ({onDelete, todo}) => {
     return (
-        <div>
+        <div className='todo-item-wrapper'>
             <button onClick={() => onDelete(todo.id)}>X</button>
             <a href={`/todos/${todo.id}`}>
-                <h3>{todo.title}</h3>
+                <h3 className='todo-item-header'>{todo.title}</h3>
                 <p>{todo.date}</p>
             </a>
         </div>

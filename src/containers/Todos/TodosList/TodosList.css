@@ -1,0 +1,8 @@
+.show-hide-create-todo {
+    float: right;
+}
+
+.todo-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
