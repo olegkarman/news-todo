@@ -1,8 +1,12 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import DatePickerField from '../../../components/DatePickerField/DatePickerField';
-import 'react-datepicker/dist/react-datepicker.css';
+import { languagesCodes, newsSortingOptions } from '../../../utils/constants';
+import { dateFormater } from '../../../utils/dateFormater';
+import TextField from '../../../components/TextField/TextField';
+import './NewsSearchForm.css';
+import SelectField from '../../../components/SelectField/SelectField';
 
 const NewsSearchSchema = Yup.object().shape({
     q: Yup.string()
@@ -23,17 +27,21 @@ const newsSearchInitialValues = {
     sortBy: ''
 };
 
-const NewsSearchForm = () => {
-    const handleSubmit = values => {
-        console.log(values)
+const NewsSearchForm = ({searchNews}) => {
+    const prepareValuesToSubmit = values => {
+        console.log(dateFormater(values, ['from', 'to']));
     }
 
     const renderLanguagesOptions = () => {
-
+        return Object.entries(languagesCodes).map(([key, value], i) => {
+            return <option key={i} value={key}>{value}</option>
+        });
     }
 
     const renderSortByOptions = () => {
-
+        return newsSortingOptions.map((opt, i) => {
+            return <option key={i} value={opt}>{opt}</option>
+        });
     }
 
     return (
@@ -41,25 +49,26 @@ const NewsSearchForm = () => {
             <Formik
                 initialValues={newsSearchInitialValues}
                 validationSchema={NewsSearchSchema}
-                onSubmit={handleSubmit}
+                onSubmit={prepareValuesToSubmit}
             >
             {({ errors, touched }) => (
                 <Form>
-                    <Field name='q' className="form-input q-input" />
-                    {errors.q && touched.q ? (
-                        <div className='form-error'>{errors.q}</div>
-                    ) : null}
+                    <TextField name='q' className='form-input' label='Search Word' />
 
-                    <DatePickerField name="from" />
-                    <DatePickerField name="to" />
+                    <div className='news-date-range'>
+                        <label className='article-range-label'>Article time range</label>
+                        <DatePickerField label='From: ' name="from" />
+                        <DatePickerField label='To: ' name="to" />
+                    </div>
 
-                    <Field as='select' name='language' className="form-input language-input">
+                    <SelectField name='language' className='form-input' label='Article language'>
                         {renderLanguagesOptions()}
-                    </Field>
+                    </SelectField>
 
-                    <Field as='select' name='sortBy' className="form-input language-input">
+                    <SelectField name='sortBy' className='form-input' label='Sort by'>
                         {renderSortByOptions()}
-                    </Field>
+                    </SelectField>
+
                     <button type='submit'>Submit</button>
                 </Form>
             )}

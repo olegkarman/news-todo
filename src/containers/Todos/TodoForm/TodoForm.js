@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
- import { Formik, Form, Field } from 'formik';
+ import { Formik, Form } from 'formik';
  import * as Yup from 'yup';
 import { addTodos, updateTodos } from '../../../redux/actions/todosActions';
 import { todoStatus } from '../../../utils/constants';
 import './TodoForm.css';
+import TextField from '../../../components/TextField/TextField';
+import SelectField from '../../../components/SelectField/SelectField';
 
 const formBasicInputs = {
     title: Yup.string()
@@ -52,9 +54,9 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
     const drawDetailsFields = () => {
         return (
             <>
-                <Field as='select' name='status' className="form-input status-input">
+                <SelectField name='sortBy' className='form-input' label='Status'>
                     {renderStatusOptions()}
-                </Field>
+                </SelectField>
                 <p className='date-text'>{todoDetails.date}</p>
             </>
         );
@@ -69,14 +71,14 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
     const drawSubmitButtons = touched => {
         if (!updateTodoForm) {
             return (
-                <button type="submit">{textValue}</button>
+                <button type='submit'>{textValue}</button>
             );
         };
 
         if (updateTodoForm && Object.keys(touched).length) {
             return (
                 <>
-                    <button type="submit">{textValue}</button>
+                    <button type='submit'>{textValue}</button>
                     <a href={'/todos'}>Cancel</a>
                 </>
             );
@@ -93,14 +95,9 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
             >
             {({ errors, touched }) => (
                 <Form>
-                    <Field name='title' className="form-input title-input" />
-                    {errors.title && touched.title ? (
-                        <div className='form-error'>{errors.title}</div>
-                    ) : null}
-                    <Field as='textarea' name='description' className='form-input description-input' />
-                    {errors.description && touched.description ? (
-                        <div className='form-error'>{errors.description}</div>
-                    ) : null}
+                    <TextField name='title' className='form-input' label='TODO title' />
+                    <TextField as='textarea' name='description' className='form-input' label='Description' />
+
                     {updateTodoForm ? drawDetailsFields() : null}
                     <div className='form-contols'>
                         {drawSubmitButtons(touched)}

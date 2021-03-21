@@ -1,0 +1,10 @@
+.search-form-wrapper form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.article-range-label {
+    display: block;
+    text-align: center;
+}

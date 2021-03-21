@@ -1,3 +1,7 @@
 export const ADD_TODOS = 'ADD_TODOS';
 export const REMOVE_TODOS = 'REMOVE_TODOS';
 export const UPDATE_TODOS = 'UPDATE_TODOS';
+
+export const LOADING_STARTED = 'LOADING_STARTED';
+export const LOADING_FINISHED = 'LOADING_FINISHED';
+export const LOADING_FAILED = 'LOADING_FAILED';
