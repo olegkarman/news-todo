@@ -1,0 +1,11 @@
+.main-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+.main-wrapper a {
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+}

@@ -97,7 +97,7 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
                     {errors.title && touched.title ? (
                         <div className='form-error'>{errors.title}</div>
                     ) : null}
-                    <Field name='description' className='form-input description-input' />
+                    <Field as='textarea' name='description' className='form-input description-input' />
                     {errors.description && touched.description ? (
                         <div className='form-error'>{errors.description}</div>
                     ) : null}
