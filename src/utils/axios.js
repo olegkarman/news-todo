@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://newsapi.org/v2/everything',
+    baseURL: 'https://newsapi.org/v2',
     responseType: 'json'
 });

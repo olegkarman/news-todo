@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    removeTodo: (id) => dispatch(removeTodos(id))
+    removeTodo: id => dispatch(removeTodos(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosList);

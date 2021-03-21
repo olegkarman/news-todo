@@ -1,10 +1,10 @@
+export const newsApiKey = 'apiKey=ec13cb92cf364f2792c8eb60f5a8f9fe';
+
 export const todoStatus = {
     ACTIVE: 'active',
     COMPLETED: 'completed',
     DELETED: 'deleted'
 };
-
-export const newsApiKey = 'ec13cb92cf364f2792c8eb60f5a8f9fe';
 
 export const languagesCodes = {
     "":      "",

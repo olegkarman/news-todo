@@ -8,6 +8,10 @@ import TextField from '../../../components/TextField/TextField';
 import './NewsSearchForm.css';
 import SelectField from '../../../components/SelectField/SelectField';
 
+// import axios from '../../../utils/axios';
+// import { newsApiKey } from '../../../utils/constants';
+// import { extractSearchData } from '../../../utils/extractSearchData';
+
 const NewsSearchSchema = Yup.object().shape({
     q: Yup.string()
         .min(2, 'Too Short!')
@@ -27,9 +31,10 @@ const newsSearchInitialValues = {
     sortBy: ''
 };
 
-const NewsSearchForm = ({searchNews}) => {
+const NewsSearchForm = ({loadNews}) => {
+
     const prepareValuesToSubmit = values => {
-        console.log(dateFormater(values, ['from', 'to']));
+        loadNews(dateFormater(values, ['from', 'to']));
     }
 
     const renderLanguagesOptions = () => {
@@ -51,7 +56,7 @@ const NewsSearchForm = ({searchNews}) => {
                 validationSchema={NewsSearchSchema}
                 onSubmit={prepareValuesToSubmit}
             >
-            {({ errors, touched }) => (
+            {() => (
                 <Form>
                     <TextField name='q' className='form-input' label='Search Word' />
 
