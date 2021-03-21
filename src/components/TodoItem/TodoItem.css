@@ -24,3 +24,11 @@
     text-decoration: none;
     color: #000;
 }
+
+.status-deleted {
+    display: none;
+}
+
+.status-completed {
+    background-color: #59b859;
+}
