@@ -1,0 +1,43 @@
+.use-filter-text {
+    margin: auto;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.news-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+}
+
+.pagination a {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    color: #000;
+}
+
+.pagination-link {
+    font-weight: bold;
+}
+
+.pagination-link--active a {
+    color: #fff;
+    background: #6c7ac9;
+}
+
+.pagination-link--disabled a {
+    color: rgb(198, 197, 202);
+    border: 1px solid rgb(198, 197, 202);
+}
+
+.no-news-found {
+  text-align: center;
+}

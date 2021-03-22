@@ -3,22 +3,23 @@ import {LOADING_STARTED, LOADING_FINISHED, LOADING_FAILED} from '../actionTypes'
 import { newsApiKey } from '../../utils/constants';
 import { extractSearchData } from '../../utils/extractSearchData';
 
-export const loadNews = params => {
-    console.log(params)
+export const loadNews = (params, page = 1) => {
+    console.log(params, page)
     return dispatch => {
-        dispatch(loadingStarted())
-        axios.get(`everything?${extractSearchData(params)}&${newsApiKey}`)
+        dispatch(loadingStarted(params));
+        return axios.get(`everything?${extractSearchData(params)}&page=${page}&${newsApiKey}`)
         .then(res => {
-            dispatch(loadingFinished(res.articles));
+            dispatch(loadingFinished(res.data));
         })
         .catch(err => {
-            dispatch(loadingFailed(err.message));
+            dispatch(loadingFailed(err));
         });
     }
-}
+};
 
-export const loadingStarted = () => ({
-    type: LOADING_STARTED
+export const loadingStarted = params => ({
+    type: LOADING_STARTED,
+    payload: { params }
 });
 
 export const loadingFinished = news => ({

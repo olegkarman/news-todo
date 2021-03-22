@@ -23,36 +23,30 @@ const NewsSearchSchema = Yup.object().shape({
     sortBy: Yup.string()
 });
 
-const newsSearchInitialValues = {
-    q: '',
-    from: '',
-    to: '',
-    language: '',
-    sortBy: ''
-};
-
-const NewsSearchForm = ({loadNews}) => {
+const NewsSearchForm = ({loadNews, searchParams, setSearchUsed}) => {
 
     const prepareValuesToSubmit = values => {
-        loadNews(dateFormater(values, ['from', 'to']));
-    }
+        const formatedValues = dateFormater(values, ['from', 'to']);
+        loadNews(formatedValues);
+        setSearchUsed(true);
+    };
 
     const renderLanguagesOptions = () => {
         return Object.entries(languagesCodes).map(([key, value], i) => {
             return <option key={i} value={key}>{value}</option>
         });
-    }
+    };
 
     const renderSortByOptions = () => {
         return newsSortingOptions.map((opt, i) => {
             return <option key={i} value={opt}>{opt}</option>
         });
-    }
+    };
 
     return (
         <div className='search-form-wrapper'>
             <Formik
-                initialValues={newsSearchInitialValues}
+                initialValues={searchParams}
                 validationSchema={NewsSearchSchema}
                 onSubmit={prepareValuesToSubmit}
             >
@@ -74,7 +68,7 @@ const NewsSearchForm = ({loadNews}) => {
                         {renderSortByOptions()}
                     </SelectField>
 
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Search</button>
                 </Form>
             )}
             </Formik>

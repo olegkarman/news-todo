@@ -1,3 +1,7 @@
+.search-form-wrapper {
+    margin-bottom: 16px;
+}
+
 .search-form-wrapper form {
     display: flex;
     flex-wrap: wrap;

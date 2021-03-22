@@ -12,6 +12,6 @@ const TodoDetailPage = ({todoDetails}) => {
 const mapStateToProps = (state, dispatchProps) => {
     const todoDetails = getTodosById(state, dispatchProps.match.params.id)
     return { todoDetails }
-}
+};
 
 export default connect(mapStateToProps)(TodoDetailPage);
