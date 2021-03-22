@@ -45,11 +45,15 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
 
     const prepareTodoToUpdate = values => {
         const updatedValues = {...values, id: todoDetails.id};
-        console.log(updatedValues);
         updateTodos(updatedValues);
     };
+
+    const prepareTodoToCreate = (values, action) => {
+        createNewTodo(values);
+        action.resetForm();
+    };
     
-    const onSubmit = updateTodoForm ? prepareTodoToUpdate : createNewTodo;
+    const onSubmit = updateTodoForm ? prepareTodoToUpdate : prepareTodoToCreate;
 
     const drawDetailsFields = () => {
         return (

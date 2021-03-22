@@ -1,4 +1,4 @@
-import {LOADING_STARTED, LOADING_FINISHED, LOADING_FAILED} from '../actionTypes';
+import {LOADING_STARTED, LOADING_FINISHED, LOADING_FAILED, RESET_NEWS} from '../actionTypes';
 
 const initialState = {
     isLoading: false,
@@ -11,7 +11,7 @@ const initialState = {
     },
     newsList: [],
     totalResults: 0,
-    errorMessage: ''
+    errorMessage: null
 };
 
 const news = (state = initialState, action) => {
@@ -28,13 +28,17 @@ const news = (state = initialState, action) => {
                 isLoading: false,
                 newsList: action.payload.news.articles,
                 totalResults: action.payload.news.totalResults
-            }
+            };
         case LOADING_FAILED:
             return {
                 ...state,
                 isLoading: false,
                 errorMessage: action.payload
-            }
+            };
+        case RESET_NEWS:
+            return {
+                ...initialState
+            };
         default:
             return state;
     }

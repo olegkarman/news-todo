@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { loadNews } from '../../../redux/actions/newsActions';
+import { loadNews, resetNews } from '../../../redux/actions/newsActions';
 import NewsSearchForm from '../NewsSearchForm/NewsSearchForm';
 import Loader from '../../../components/Loader/Loader';
 import NewsItem from '../../../components/NewsItem/NewsItem';
 import ReactPaginate from "react-paginate";
 import './SearchNews.css';
 
-const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalResults, newsErrorMessage}) => {
+const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalResults, resetNews, newsErrorMessage}) => {
     const [searchUsed, setSearchUsed] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
     let pageCount = 0;
+
+    useEffect(() => {
+        return () => {
+            resetNews();
+        }
+    }, []);
 
     const drawNewsWithPagination = () => {
         pageCount = Math.ceil(newsTotalResults/20);
@@ -36,6 +42,18 @@ const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalR
         );
     };
 
+    const drawInfoText = () => {
+        if (newsErrorMessage) {
+            return (<p className='no-news-found'>{newsErrorMessage.error.message}</p>);
+        }
+        if (!searchUsed) {
+            return (<p className='use-filter-text'>Please, use filter to find news.</p>);
+        }
+        if (!newsList.length) {
+            return (<p className='no-news-found'>No news found. Please update search params.</p>);
+        }
+    }
+
     const handlePageClick = ({ selected: selectedPage }) => {
         setCurrentPage(selectedPage);
         loadNews(searchParams, selectedPage + 1);
@@ -49,13 +67,7 @@ const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalR
             isNewsLoading ? <Loader /> : 
             
             <>
-                {
-                !searchUsed && !newsList.length ? 
-                    <p className='use-filter-text'>Please, use filter to find news</p> 
-                : 
-                    <p className='no-news-found'>No news found. Please, update the search params.</p>
-                }
-
+                {drawInfoText()}
 
                 {newsList.length ? drawNewsWithPagination() : null}
             </>
@@ -75,7 +87,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    loadNews: (params, page) => dispatch(loadNews(params, page))
+    loadNews: (params, page) => dispatch(loadNews(params, page)),
+    resetNews: () => dispatch(resetNews())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchNews);
