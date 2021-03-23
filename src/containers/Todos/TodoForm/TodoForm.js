@@ -100,7 +100,7 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
             {({ errors, touched }) => (
                 <Form>
                     <TextField name='title' className='form-input' label='TODO title' />
-                    <TextField as='textarea' name='description' className='form-input' label='Description' />
+                    <TextField isTextArea={true} name='description' className='form-input' label='Description' />
 
                     {updateTodoForm ? drawDetailsFields() : null}
                     <div className='form-contols'>
