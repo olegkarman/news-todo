@@ -3,6 +3,7 @@ import { useField, useFormikContext } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePickerField.css';
+import { getMinDate } from '../../utils/dateFormater';
 
 export const DatePickerField = ({label, ...props }) => {
     const { setFieldValue } = useFormikContext();
@@ -20,6 +21,7 @@ export const DatePickerField = ({label, ...props }) => {
                 setFieldValue(field.name, val);
                 }}
                 maxDate={new Date()}
+                minDate={getMinDate()} // with free version of API it is not possible to get all data
                 dateFormat="MM-dd-yyyy"
             />
         </>

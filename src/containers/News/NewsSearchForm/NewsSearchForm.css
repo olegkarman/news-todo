@@ -12,6 +12,10 @@
     flex-wrap: wrap;
 }
 
+.search-form-wrapper .field-wrapper {
+    margin-right: 16px;
+}
+
 .article-range-label {
     display: block;
     text-align: center;
@@ -29,9 +33,14 @@
     display: inline-block;
 }
 
+.news-date-range {
+    margin-left: 16px;
+}
+
 @media (max-width: 400px) {
     .news-date-range {
         display: flex;
         flex-direction: column;
+        margin: 0;
     }
 }

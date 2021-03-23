@@ -21,3 +21,7 @@ export const dateToSaveFormater = (data, propertiesArray) => {
 
     return formatedData;
 };
+
+export const getMinDate = () => {
+    return new Date().setDate(new Date().getDate() - 7);
+};

@@ -42,10 +42,12 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
         status: todoDetails.status,
         date: todoDetails.date
     } : formBasicInitialValues;
+    console.log(initialValues);
 
-    const prepareTodoToUpdate = values => {
+    const prepareTodoToUpdate = (values, action) => {
         const updatedValues = {...values, id: todoDetails.id};
         updateTodos(updatedValues);
+        alert('Todo was updated!');
     };
 
     const prepareTodoToCreate = (values, action) => {
@@ -61,7 +63,7 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
                 <SelectField name='status' className='form-input' label='Status'>
                     {renderStatusOptions()}
                 </SelectField>
-                <p className='date-text'>{todoDetails.date}</p>
+                <p className='date-text'>Date of creation - {todoDetails.date}</p>
             </>
         );
     };

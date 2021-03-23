@@ -4,15 +4,20 @@
     padding-right: 24px;
     margin-right: 12px;
     margin-bottom: 12px;
-    border: 1px solid #c9c9c9;
+    border: 1px solid #7562CA;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
 }
 
 .todo-item-wrapper button {
     float: right;
     position: relative;
-    top: -14px;
-    right: -24px;
+    top: -12px;
+    right: -22px;
+    width: 24px;
+    height: 24px;
+    font-weight: 500;
+    color: #596C91;
 }
 
 .todo-item-header {
@@ -25,10 +30,17 @@
     color: #000;
 }
 
+.todo-item-wrapper p {
+    font-size: 14px;
+}
+
 .status-deleted {
+    /* For now I simply remove todos using styles.
+    This was done due to my understanding of task.
+    The logic can be simply changed to delete todos from store completely. */
     display: none;
 }
 
 .status-completed {
-    background-color: #59b859;
+    background-color: #8fff8f;
 }

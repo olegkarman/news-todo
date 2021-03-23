@@ -1,9 +1,34 @@
+.form-wrapper {
+    margin-bottom: 32px;
+    width: 320px;
+}
+
+.form-header {
+    color: #413a61;
+}
+
 .form-input {
     display: block;
     margin-bottom: 8px;
 }
 
 .form-error {
-    color: #f00;
+    color: #ff0000;
     margin-bottom: 8px;
+    font-size: 500;
+}
+
+.form-contols button {
+    margin-right: 16px;
+}
+
+.form-contols a {
+    border: 1px solid #7562CA;
+    color: #7562CA;
+    background: #FFF;
+    height: 32px;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 4px;
+    text-decoration: none;
 }

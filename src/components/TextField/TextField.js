@@ -4,7 +4,7 @@ import { useField } from 'formik';
 const TextField = ({ isTextArea = false, label, ...props }) => {
     const [field, meta] = useField(props);
     return (
-      <span>
+      <span className='field-wrapper'>
         <label>
             {label}
             {isTextArea ? <textarea {...field} {...props} /> : <input {...field} {...props} />}

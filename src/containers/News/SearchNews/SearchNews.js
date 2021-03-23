@@ -18,7 +18,7 @@ const SearchNews = ({newsPage, searchParams, loadNews, newsList, isNewsLoading, 
     }, []);
 
     const drawNewsWithPagination = () => {
-        pageCount = Math.ceil(newsTotalResults/20);
+        pageCount = Math.ceil(newsTotalResults/20) < 20 ? Math.ceil(newsTotalResults/20) : 20; // with free version of API it is not possible to get all data
         return (
             <> 
                 <div className='news-list-wrapper'>
@@ -60,7 +60,7 @@ const SearchNews = ({newsPage, searchParams, loadNews, newsList, isNewsLoading, 
     return (
         <div className='search-news-wrapper'>
             <NewsSearchForm loadNews={loadNews} searchParams={searchParams} setSearchUsed={setSearchUsed} />
-
+            
             {
             isNewsLoading ? <Loader /> : 
             

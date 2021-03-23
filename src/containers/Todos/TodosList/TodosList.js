@@ -21,7 +21,6 @@ const TodosList = ({todosList, removeTodo}) => {
             <button className='show-hide-create-todo' onClick={() => setTodosFormVisibility(!showTodosForm)}>{!showTodosForm ? '+' : '-'}</button>
             {showTodosForm ? <TodoForm /> : null}
             
-            <br />
             <div className='todo-list-wrapper'>
                 {todosList.length ? drawTodos() : null}
             </div>

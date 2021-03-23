@@ -4,7 +4,7 @@ import { useField } from 'formik';
 const SelectField = ({ label, children, ...props }) => {
     const [field, meta] = useField(props);
     return (
-      <span>
+      <span className='field-wrapper'>
         <label>
             {label}
             <select {...field} {...props}>

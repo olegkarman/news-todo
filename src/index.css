@@ -1,0 +1,40 @@
+button {
+    height: 32px;
+    background-color: #ebf0f5;
+    border: none;
+    color: #596C91;
+    border-radius: 16px;
+}
+
+button[type='submit'] {
+    background-color: #7562CA;
+    color: #FFF;
+}
+
+input,
+textarea,
+select {
+    height: 32px;
+    width: 100%;
+    border: 1px solid #7562CA;
+    border-radius: 16px;
+    background-color: #f8f9fc;
+    padding-left: 8px;
+}
+
+textarea {
+    border: none;
+}
+
+select {
+    padding-right: 12px;
+
+}
+
+button,
+input,
+textarea,
+select {
+    outline: none;
+    font-family: 'Roboto Mono', monospace;;
+}

@@ -3,6 +3,8 @@
     border: 1px solid #c9c9c9;
     box-shadow: 2px 2px 4px rgb(0 0 0 / 15%);
     margin-bottom: 16px;
+    padding: 4px;
+    border-radius: 16px;
 }
 
 .news-item-wrapper a {

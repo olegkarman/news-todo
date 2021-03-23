@@ -7,7 +7,7 @@ export const todoStatus = {
 };
 
 export const languagesCodes = {
-    "":      "",
+    "":      "All",
     "aa":    "Afar",
     "ab":    "Abkhazian",
     "af":    "Afrikaans",
@@ -33,7 +33,6 @@ export const languagesCodes = {
     "div":   "Divehi",
     "dz":    "Bhutani",
     "el":    "Greek",
-    "en":    "English",
     "eo":    "Esperanto",
     "es":    "Spanish",
     "et":    "Estonian",
