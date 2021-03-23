@@ -3,13 +3,13 @@
 }
 
 .search-form-wrapper form {
-    display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
 }
 
+.search-form-wrapper form,
 .search-row {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .article-range-label {
