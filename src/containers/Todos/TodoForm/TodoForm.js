@@ -58,7 +58,7 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
     const drawDetailsFields = () => {
         return (
             <>
-                <SelectField name='sortBy' className='form-input' label='Status'>
+                <SelectField name='status' className='form-input' label='Status'>
                     {renderStatusOptions()}
                 </SelectField>
                 <p className='date-text'>{todoDetails.date}</p>
