@@ -7,7 +7,7 @@ const NewsItem = ({news, id}) => {
             <a href={`/search-news/${id}`}>
                 {news.urlToImage ? <img alt='news-title' className='news-image' src={news.urlToImage} /> : null}
                 <h3 className='news-item-header'>{news.title}</h3>
-                <p>{news.description}</p>
+                <p className='news-description'>{news.description}</p>
             </a>
         </div>
     );

@@ -10,7 +10,7 @@ export const DatePickerField = ({label, ...props }) => {
     return (
         <>
             <label>
-              {label}
+                {label}
             </label>
             <DatePicker
                 {...field}
@@ -20,6 +20,7 @@ export const DatePickerField = ({label, ...props }) => {
                 setFieldValue(field.name, val);
                 }}
                 maxDate={new Date()}
+                dateFormat="MM-dd-yyyy"
             />
         </>
     );

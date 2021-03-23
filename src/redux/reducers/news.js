@@ -7,11 +7,12 @@ const initialState = {
         from: '',
         to: '',
         language: '',
-        sortBy: ''
+        sortBy: '',
     },
     newsList: [],
     totalResults: 0,
-    errorMessage: null
+    errorMessage: null,
+    page: 0
 };
 
 const news = (state = initialState, action) => {
@@ -27,7 +28,8 @@ const news = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 newsList: action.payload.news.articles,
-                totalResults: action.payload.news.totalResults
+                totalResults: action.payload.news.totalResults,
+                page: action.payload.page
             };
         case LOADING_FAILED:
             return {

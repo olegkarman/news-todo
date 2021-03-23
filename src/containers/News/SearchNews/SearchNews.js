@@ -7,9 +7,8 @@ import NewsItem from '../../../components/NewsItem/NewsItem';
 import ReactPaginate from "react-paginate";
 import './SearchNews.css';
 
-const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalResults, resetNews, newsErrorMessage}) => {
+const SearchNews = ({newsPage, searchParams, loadNews, newsList, isNewsLoading, newsTotalResults, resetNews, newsErrorMessage}) => {
     const [searchUsed, setSearchUsed] = useState(false);
-    const [currentPage, setCurrentPage] = useState(0);
     let pageCount = 0;
 
     useEffect(() => {
@@ -36,7 +35,7 @@ const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalR
                     nextLinkClassName={"pagination-link"}
                     disabledClassName={"pagination-link--disabled"}
                     activeClassName={"pagination-link--active"}
-                    forcePage={currentPage}
+                    forcePage={newsPage}
                 />
             </>
         );
@@ -55,7 +54,6 @@ const SearchNews = ({searchParams, loadNews, newsList, isNewsLoading, newsTotalR
     }
 
     const handlePageClick = ({ selected: selectedPage }) => {
-        setCurrentPage(selectedPage);
         loadNews(searchParams, selectedPage + 1);
     };
 
@@ -82,7 +80,8 @@ const mapStateToProps = (state) => {
         newsList: state.news.newsList,
         isNewsLoading: state.news.isLoading,
         newsTotalResults: state.news.totalResults,
-        newsErrorMessage: state.news.errorMessage
+        newsErrorMessage: state.news.errorMessage,
+        newsPage: state.news.page
     }
 };
 

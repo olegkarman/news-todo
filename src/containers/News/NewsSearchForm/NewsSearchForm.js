@@ -3,14 +3,9 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import DatePickerField from '../../../components/DatePickerField/DatePickerField';
 import { languagesCodes, newsSortingOptions } from '../../../utils/constants';
-import { dateFormater } from '../../../utils/dateFormater';
 import TextField from '../../../components/TextField/TextField';
 import './NewsSearchForm.css';
 import SelectField from '../../../components/SelectField/SelectField';
-
-// import axios from '../../../utils/axios';
-// import { newsApiKey } from '../../../utils/constants';
-// import { extractSearchData } from '../../../utils/extractSearchData';
 
 const NewsSearchSchema = Yup.object().shape({
     q: Yup.string()
@@ -26,8 +21,7 @@ const NewsSearchSchema = Yup.object().shape({
 const NewsSearchForm = ({loadNews, searchParams, setSearchUsed}) => {
 
     const prepareValuesToSubmit = values => {
-        const formatedValues = dateFormater(values, ['from', 'to']);
-        loadNews(formatedValues);
+        loadNews(values);
         setSearchUsed(true);
     };
 
@@ -52,23 +46,27 @@ const NewsSearchForm = ({loadNews, searchParams, setSearchUsed}) => {
             >
             {() => (
                 <Form>
-                    <TextField name='q' className='form-input' label='Search Word' />
+                    <div className='search-row top-search-row'>
+                        <TextField name='q' className='form-input' label='Search Word' />
 
-                    <div className='news-date-range'>
-                        <label className='article-range-label'>Article time range</label>
-                        <DatePickerField label='From: ' name="from" />
-                        <DatePickerField label='To: ' name="to" />
+                        <div className='news-date-range'>
+                            <label className='article-range-label'>Article time range</label>
+                            <DatePickerField label='From: ' name="from" />
+                            <DatePickerField label='To: ' name="to" />
+                        </div>
                     </div>
 
-                    <SelectField name='language' className='form-input' label='Article language'>
-                        {renderLanguagesOptions()}
-                    </SelectField>
+                    <div className='search-row bottom-search-row'>
+                        <SelectField name='language' className='form-input' label='Article language'>
+                            {renderLanguagesOptions()}
+                        </SelectField>
 
-                    <SelectField name='sortBy' className='form-input' label='Sort by'>
-                        {renderSortByOptions()}
-                    </SelectField>
+                        <SelectField name='sortBy' className='form-input' label='Sort by'>
+                            {renderSortByOptions()}
+                        </SelectField>
+                    </div>
 
-                    <button type='submit'>Search</button>
+                    <button className='news-submit-button' type='submit'>Search</button>
                 </Form>
             )}
             </Formik>

@@ -2,13 +2,14 @@ import axios from '../../utils/axios';
 import {LOADING_STARTED, LOADING_FINISHED, LOADING_FAILED, RESET_NEWS} from '../actionTypes';
 import { newsApiKey } from '../../utils/constants';
 import { extractSearchData } from '../../utils/extractSearchData';
+import { dateToSearchFormater, dateToSaveFormater } from '../../utils/dateFormater';
 
 export const loadNews = (params, page = 1) => {
     return dispatch => {
-        dispatch(loadingStarted(params));
-        return axios.get(`everything?${extractSearchData(params)}&page=${page}&${newsApiKey}`)
+        dispatch(loadingStarted(dateToSaveFormater(params, ['from', 'to'])));
+        return axios.get(`everything?${extractSearchData(dateToSearchFormater(params, ['from', 'to']))}&page=${page}&${newsApiKey}`)
         .then(res => {
-            dispatch(loadingFinished(res.data));
+            dispatch(loadingFinished(res.data, page - 1));
         })
         .catch(err => {
             dispatch(loadingFailed(err));
@@ -21,9 +22,9 @@ export const loadingStarted = params => ({
     payload: { params }
 });
 
-export const loadingFinished = news => ({
+export const loadingFinished = (news, page) => ({
     type: LOADING_FINISHED,
-    payload: { news }
+    payload: { news, page }
 });
 
 export const loadingFailed = error => ({

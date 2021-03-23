@@ -5,10 +5,22 @@
 .search-form-wrapper form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.search-row {
+    display: flex;
 }
 
 .article-range-label {
     display: block;
     text-align: center;
+}
+
+.form-input {
+    margin-right: 8px;
+}
+
+.news-submit-button {
+    width: 60px;
 }

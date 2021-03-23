@@ -1,0 +1,21 @@
+.news-detail-page img {
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
+
+.news-detail-page h2 {
+    text-align: center;
+}
+
+.news-detail-page a {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.news-extra-info {
+    text-align: end;
+    color: #808080;
+    margin: 0;
+}
