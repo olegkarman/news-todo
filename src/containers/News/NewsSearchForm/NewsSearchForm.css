@@ -24,3 +24,14 @@
 .news-submit-button {
     width: 60px;
 }
+
+.react-datepicker__tab-loop {
+    display: inline-block;
+}
+
+@media (max-width: 400px) {
+    .news-date-range {
+        display: flex;
+        flex-direction: column;
+    }
+}
