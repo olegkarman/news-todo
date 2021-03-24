@@ -9,15 +9,17 @@ import TodosList from './Todos/TodosList/TodosList';
 
 const Home = () => {
   return (
-    <div className="News-Todo">
+    <div className="news-todo">
       <Navbar />
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/search-news" component={SearchNews} />
-        <Route path="/search-news/:id" component={NewsDetailPage} /> 
-        <Route exact path="/todos" component={TodosList} />
-        <Route path="/todos/:id" component={TodoDetailPage} />
-      </Switch>
+      <div className='app-content'>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/search-news" component={SearchNews} />
+          <Route path="/search-news/:id" component={NewsDetailPage} /> 
+          <Route exact path="/todos" component={TodosList} />
+          <Route path="/todos/:id" component={TodoDetailPage} />
+        </Switch>
+      </div>
     </div>
   );
 }

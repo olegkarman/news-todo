@@ -9,6 +9,8 @@ button {
 button[type='submit'] {
     background-color: #7562CA;
     color: #FFF;
+    padding: 12px;
+    height: auto;
 }
 
 input,
@@ -16,9 +18,9 @@ textarea,
 select {
     height: 32px;
     width: 100%;
-    border: 1px solid #7562CA;
+    border: none;
     border-radius: 16px;
-    background-color: #f8f9fc;
+    background-color: #fff;
     padding-left: 8px;
 }
 
@@ -37,4 +39,8 @@ textarea,
 select {
     outline: none;
     font-family: 'Roboto Mono', monospace;;
+}
+
+.app-content {
+    margin: 0 16px;
 }

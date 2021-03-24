@@ -42,7 +42,6 @@ const TodoForm = ({ updateTodoForm = false, todoDetails = {}, createNewTodo, upd
         status: todoDetails.status,
         date: todoDetails.date
     } : formBasicInitialValues;
-    console.log(initialValues);
 
     const prepareTodoToUpdate = (values, action) => {
         const updatedValues = {...values, id: todoDetails.id};

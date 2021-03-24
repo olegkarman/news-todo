@@ -3,9 +3,29 @@
     height: 50px;
     font-size: 24px;
     margin-bottom: 16px;
+    border-radius: 50%;
+    color: #FFF;
+    background-color: #7764CA;
 }
 
 .todo-list-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 600px;
+    margin: auto;
+}
+
+.top-todo-list-part {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todos-current-time {
+    margin-top: 0;
+    color: #808080;
+}
+
+.todos-tasks-number {
+    color: #7764CA;
+    font-weight: 500;
 }

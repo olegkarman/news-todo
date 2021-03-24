@@ -1,4 +1,4 @@
-import { ADD_TODOS, REMOVE_TODOS, UPDATE_TODOS } from '../actionTypes';
+import { ADD_TODOS, REMOVE_TODOS, UPDATE_TODOS, COMPLETE_TODOS } from '../actionTypes';
 import { todoStatus } from '../../utils/constants';
 
 export const addTodos = todo => ({
@@ -13,6 +13,11 @@ export const addTodos = todo => ({
 
 export const removeTodos = id => ({
     type: REMOVE_TODOS,
+    payload: {id}
+});
+
+export const completeTodos = id => ({
+    type: COMPLETE_TODOS,
     payload: {id}
 });
 

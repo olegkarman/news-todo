@@ -5,7 +5,7 @@ const SelectField = ({ label, children, ...props }) => {
     const [field, meta] = useField(props);
     return (
       <span className='field-wrapper'>
-        <label>
+        <label className='form-field-label'>
             {label}
             <select {...field} {...props}>
                 {children}

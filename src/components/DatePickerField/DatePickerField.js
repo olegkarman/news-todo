@@ -10,7 +10,7 @@ export const DatePickerField = ({label, ...props }) => {
     const [field] = useField(props);
     return (
         <>
-            <label>
+            <label className='form-field-label'>
                 {label}
             </label>
             <DatePicker

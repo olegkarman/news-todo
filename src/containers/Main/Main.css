@@ -1,11 +1,13 @@
 .main-wrapper {
     display: flex;
     justify-content: space-evenly;
-    height: 90vh;
 }
 
 .main-wrapper a {
-    width: 50%;
+    display: inline-block;
     text-align: center;
-    vertical-align: middle;
+    text-decoration: none;
+    border: 1px solid #7562CA;
+    border-radius: 16px;
+    padding: 12px;
 }

@@ -5,7 +5,7 @@ const TextField = ({ isTextArea = false, label, ...props }) => {
     const [field, meta] = useField(props);
     return (
       <span className='field-wrapper'>
-        <label>
+        <label className='form-field-label'>
             {label}
             {isTextArea ? <textarea {...field} {...props} /> : <input {...field} {...props} />}
         </label>

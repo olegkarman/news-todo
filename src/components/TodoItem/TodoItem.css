@@ -1,28 +1,60 @@
 .todo-item-wrapper {
-    width: 130px;
     padding: 14px 16px;
     padding-right: 24px;
     margin-right: 12px;
     margin-bottom: 12px;
-    border: 1px solid #7562CA;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    min-width: 320px
 }
 
 .todo-item-wrapper button {
     float: right;
     position: relative;
-    top: -12px;
-    right: -22px;
     width: 24px;
-    height: 24px;
+    height: 24px;    
+    top: 14px;
     font-weight: 500;
     color: #596C91;
+}
+
+.todo-item-wrapper .complete-button {
+    left: -12px;
+    border: 1px solid #808080;
+    cursor: pointer;
+}
+
+.complete-button.status-completed {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 24px;
+    width: 8px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 3px solid #7764CA;
+    border-right: 3px solid #7764CA;
+    background-color: #f5f5f5;
+    top: 12px;
+    left: -6px;
+    margin-right: 9px;
+}
+
+.todo-item-wrapper .delete-button {
+    color: #fff;
+    background-color: #7764CA;
+    cursor: pointer;
 }
 
 .todo-item-header {
     word-break: break-all;
     hyphens: auto;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.todo-date-creation {
+    margin: 0;
 }
 
 .todo-item-wrapper a {
@@ -41,6 +73,10 @@
     display: none;
 }
 
-.status-completed {
-    background-color: #8fff8f;
+.todo-item-info {
+    flex: 1;
+}
+
+.todo-item-info.status-completed {
+    opacity: .5;
 }
